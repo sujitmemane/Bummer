@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import CartContext from "../store/cart-context";
 import CartItem from "../components/CartItem";
-
+import PaymentForm from "../components/PaymentForm";
 const Cart = () => {
   const cartCtx = useContext(CartContext);
 
@@ -13,8 +13,9 @@ const Cart = () => {
             <CartItem cartItem={cartItem} />
           ))}
         </div>
-        <div className="border w-[400px] p-12 ">
+        <div className="border w-[400px] p-8 ">
           Total Amount : {cartCtx.totalAmount}
+          <PaymentForm />
         </div>
       </div>
     </div>
