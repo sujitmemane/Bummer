@@ -1,14 +1,26 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useRef } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { FiFeather } from "react-icons/fi";
 import { TbArrowAutofitWidth } from "react-icons/tb";
 import { GiSplitCross } from "react-icons/gi";
 import { FiArrowUp, FiArrowDown } from "react-icons/fi";
+import CartContext from "../store/cart-context";
 
 const Product = () => {
+  const enteredAmount = useRef();
+  const cartCtx = useContext(CartContext);
   const params = useParams();
   const [productData, setProductData] = useState({});
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setVisible(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, [visible]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,8 +67,33 @@ const Product = () => {
     });
     setAccordion(newAccordion);
   };
+  const addToCartHandler = (e) => {
+    e.preventDefault();
+
+    const enteredAmountValue = enteredAmount.current.value;
+    const enteredAmountNumber = +enteredAmountValue;
+
+    if (enteredAmountNumber > 0 && enteredAmountNumber < 5) {
+      console.log("hi");
+      cartCtx.addItem({
+        id: productData.id,
+        amount: enteredAmountNumber,
+        price: productData.price,
+        name: productData.name,
+      });
+      setVisible(true);
+    }
+  };
+
   return (
     <div className="container mx-auto my-12">
+      <div
+        className={` fixed bottom-4 right-4 bg-[#F7D031] uppercase border-2 border-black  font-bold text-black px-6 py-2 rounded-md ${
+          visible ? "opacity-100" : "opacity-0"
+        } transition-opacity duration-100`}
+      >
+        Item Added To Cart
+      </div>
       <div className="my-4 p-8 flex flex-col items-center justify-center space-y-4">
         <p className="uppercase text-xs">
           Home <span className="opacity-50">/ </span> Collection{" "}
@@ -93,8 +130,12 @@ const Product = () => {
               </div>
             </div>
           </div>
-          <form className="flex flex-row items-center justify-between  space-x-2  ">
+          <form
+            className="flex flex-row items-center justify-between  space-x-2 "
+            onSubmit={addToCartHandler}
+          >
             <input
+              ref={enteredAmount}
               type="number"
               max="5"
               min="1"
@@ -112,9 +153,8 @@ const Product = () => {
         <h1 className="text-4xl font-bold ">FAQs</h1>
         <div className="w-[600px] ">
           {accordion.map((accord) => {
-            console.log(accord.open);
             return (
-              <div className=" p-2">
+              <div className=" p-2" id={accord.id}>
                 <div
                   onClick={() => toggleChangeHandler(accord.id)}
                   className=" cursor-pointer flex flex-row items-center justify-between text-xl font-bold py-4  "

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Hero from "./../assets/hero.webp";
 import Mention from "../components/Mention";
 import SampleWears from "../components/SampleWears";
@@ -7,7 +7,11 @@ import Deal from "../components/Deal";
 import Category from "../components/Category";
 import Info from "../components/Info";
 import { Link } from "react-router-dom";
+import cartContext from "../store/cart-context";
+
 const Home = () => {
+  const cartCtx = useContext(cartContext);
+  console.log(cartCtx.items);
   return (
     <div>
       <div

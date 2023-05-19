@@ -18,7 +18,7 @@ const Category = () => {
     };
     fetchAPI();
   }, []);
-  console.log(menwears);
+
   return (
     <div
       className="bg-[#e2eef7]  p-24 flex flex-col items-center justify-center space-y-8"
@@ -46,14 +46,14 @@ const Category = () => {
       {activeTab === "men" && (
         <div className="grid md:grid-cols-4 px-24  mt-8 items-start gap-5 ">
           {menwears.map((menwear) => (
-            <SampleMenElement menwear={menwear} />
+            <SampleMenElement key={menwear.id} menwear={menwear} />
           ))}
         </div>
       )}
       {activeTab === "women" && (
         <div className="grid md:grid-cols-4 px-24  mt-8 items-start gap-5 ">
           {womenwears.map((women) => (
-            <SampleWomenElement women={women} />
+            <SampleWomenElement key={women.id} women={women} />
           ))}
         </div>
       )}

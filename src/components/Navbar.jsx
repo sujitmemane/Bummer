@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "../assets/logo.webp";
 import { AiOutlineUser, AiOutlineSearch } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Underwear from "./../assets/underwear.webp";
+import CartContext from "../store/cart-context";
 const Navbar = () => {
+  const cartCtx = useContext(CartContext);
   return (
     <div className="flex flex-row items-center justify-between space-x-4 px-6 py-4 border-b-2 border-black">
       <div className=" md:w-1/3">
@@ -29,7 +31,7 @@ const Navbar = () => {
         <Link to="cart">
           <div className="relative  p-2 cursor-pointer ">
             <span className="absolute bg-[#343a40] text-white rounded-full px-1 -ml-2 -mt-2 text-xs">
-              0
+              {cartCtx.items.length}
             </span>
 
             <img src={Underwear} className="w-11 h-8" />

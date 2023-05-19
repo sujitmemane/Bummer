@@ -12,13 +12,13 @@ const SampleWears = () => {
     };
     fetchAPI();
   }, []);
-  console.log(underwears);
+
   return (
     <div className="container mx-auto my-12 flex flex-col items-center  ">
       <h1 className="text-4xl font-bold text-center">Meet our favourites </h1>
       <div className="grid md:grid-cols-4 px-24  mt-8 items-start gap-3 ">
         {underwears.map((underwear) => (
-          <SampleWearElement underwear={underwear} />
+          <SampleWearElement key={underwear.id} underwear={underwear} />
         ))}
       </div>
       <a

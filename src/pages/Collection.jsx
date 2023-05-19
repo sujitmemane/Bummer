@@ -34,7 +34,7 @@ const Collection = () => {
       <div className="px-4 py-2 text-lg ">{underwears.length} products</div>
       <div className="grid md:grid-cols-4 px-12  mt-8 items-start gap-7 ">
         {randomizedArray.map((product) => (
-          <CollectionPageElement product={product} />
+          <CollectionPageElement key={product.id} product={product} />
         ))}
       </div>
     </div>
