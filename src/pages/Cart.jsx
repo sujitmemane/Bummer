@@ -8,6 +8,9 @@ const Cart = () => {
   const checkoutHandler = () => {
     setCheckout(true);
   };
+  function closeCheckoutHandler() {
+    setCheckout(false);
+  }
   return (
     <div className="m-12 md:p-8  ">
       <div className=" md:p-4 flex flex-col items-center justify-center space-y-8">
@@ -26,18 +29,22 @@ const Cart = () => {
               <CartItem cartItem={cartItem} />
             ))}
           </div>
-          <div className="border w-[400px] p-8 flex flex-col justify-between items-start  ">
-            Total Amount : {cartCtx.totalAmount}
-            {checkout ? (
-              <PaymentForm />
-            ) : (
+          <div className="border w-[400px] p-2 flex flex-col justify-between items-start  ">
+            <div className="flex flex-row justify-between items-center space-x-4">
+              <h1 className="text-xl text-black uppercase font-bold">
+                {" "}
+                Amount : Rs. {cartCtx.totalAmount}{" "}
+              </h1>
               <button
-                className="px-12 py-3 bg-[#F7D031] text-black"
+                className={`px-12 py-3 uppercase font-bold bg-[#F7D031] text-black ${
+                  checkout ? "hidden" : "block"
+                }`}
                 onClick={checkoutHandler}
               >
                 Checkout
               </button>
-            )}
+            </div>
+            {checkout && <PaymentForm onClose={closeCheckoutHandler} />}
           </div>
         </div>
       ) : (
