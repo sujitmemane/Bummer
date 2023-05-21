@@ -101,21 +101,23 @@ const Product = () => {
           <span className="font-bold">{productData.name}</span>
         </p>
       </div>
-      <div className="flex flex-row items-center justify-between p-12 space-x-24">
+      <div className="flex  flex-col space-y-4 md:space-y-0 md:flex-row  items-center justify-between p-12 md:space-x-24">
         <div className="md:w-1/2">
           <img src={productData.imageUrl} className="w-full" />
         </div>
-        <div className="md:w-1/2 flex flex-col items-start justify-center space-y-4">
-          <h1 className="text-black text-4xl font-bold">{productData.name}</h1>
+        <div className="md:w-1/2 flex flex-col items-start justify-center space-y-4 p-4 ">
+          <h1 className="text-black text-2xl md:text-4xl font-bold">
+            {productData.name}
+          </h1>
           <p className="text-black text-2xl ">
             ₹{productData.price}
             <span className="text-sm mx-4">(Incl. of all taxes)</span>
           </p>
-          <div className="text-black  w-full ">
+          <div className="text-black  w-full hidden md:block ">
             <h1 className="text-2xl font-bold uppercase text-black my-2">
               PRODUCT HIGHLIGHTS
             </h1>
-            <div className="flex flex-row font-semibold items-center justify-between flex-1 p-8 ">
+            <div className="flex flex-row font-semibold items-center justify-between flex-1 p-2 md:p-8 ">
               <div className="flex flex-col justify-between items-center space-y-2">
                 <FiFeather size={50} />
                 <p className="text-center">Feels Soft & Cozy</p>
@@ -131,7 +133,7 @@ const Product = () => {
             </div>
           </div>
           <form
-            className="flex flex-row items-center justify-between  space-x-2 "
+            className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0  space-x-2 "
             onSubmit={addToCartHandler}
           >
             <input
@@ -140,36 +142,37 @@ const Product = () => {
               max="5"
               min="1"
               defaultValue="1"
-              className=" px-8 input py-3 text-xl rounded text-center text-black font-bold border-2 border-black "
+              className=" px-16 py-1 md:px-8 md:py-4  input  text-xl rounded text-center text-black font-bold border-2 border-black "
             />
-            <button className="px-28 py-3 text-xl tect-black bg-[#F7D031] border-2 text-black font-bold border-black">
+            <button className="px-16 md:px-28  md:py-1 text-md md:text-xl text-center  bg-[#F7D031] border-2 text-black font-bold border-black">
               ADD TO CART
             </button>
           </form>
         </div>
       </div>
-
-      <div className="flex flex-col items-center justify-between space-y-4 text-black">
-        <h1 className="text-4xl font-bold ">FAQs</h1>
-        <div className="w-[600px] ">
-          {accordion.map((accord) => {
-            return (
-              <div className=" p-2" id={accord.id}>
-                <div
-                  onClick={() => toggleChangeHandler(accord.id)}
-                  className=" cursor-pointer flex flex-row items-center justify-between text-xl font-bold py-4  "
-                >
-                  <div>{accord.qs}</div>
-                  {accord.open ? <FiArrowUp /> : <FiArrowDown />}
+      <div className="hidden md:block">
+        <div className=" flex flex-col items-center justify-between space-y-4 text-black">
+          <h1 className="text-4xl font-bold ">FAQs</h1>
+          <div className="w-[600px] ">
+            {accordion.map((accord) => {
+              return (
+                <div className=" p-2" id={accord.id}>
+                  <div
+                    onClick={() => toggleChangeHandler(accord.id)}
+                    className=" cursor-pointer flex flex-row items-center justify-between text-xl font-bold py-4  "
+                  >
+                    <div>{accord.qs}</div>
+                    {accord.open ? <FiArrowUp /> : <FiArrowDown />}
+                  </div>
+                  {accord.open ? (
+                    <div className="text-md scale-in-ver-top">{accord.ans}</div>
+                  ) : (
+                    ""
+                  )}
                 </div>
-                {accord.open ? (
-                  <div className="text-md fade-in-top">{accord.ans}</div>
-                ) : (
-                  ""
-                )}
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

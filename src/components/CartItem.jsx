@@ -16,13 +16,13 @@ const CartItem = ({ cartItem }) => {
     CartCtx.removeItem(id);
   };
   return (
-    <div className="flex flex-col items-start text-black justify-between space-y-4 border w-[400px] p-4">
+    <div className="flex flex-col items-start text-black justify-between space-y-4 shadow w-[300px] md:w-[400px] p-4">
       <h1 className="text-xl font-bold capitalize"> {cartItem.name} </h1>
       <div className="flex flex-row items-center justify-between w-full ">
         <div className="flex flex-row items-center space-x-2">
           <span className="font-bold italic">Rs {cartItem.price}</span>
           <span>
-            <ImCross size={30} />
+            <ImCross size={20} />
           </span>
           <span>{cartItem.amount} </span>
         </div>

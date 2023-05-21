@@ -15,15 +15,15 @@ const Home = () => {
   return (
     <div>
       <div
-        className="bg-cover   bg-no-repeat  h-[28rem] bg-gradient-to-b from-black via-black-opacity-46 to-transparent"
+        className="bg-cover   bg-no-repeat  h-auto bg-gradient-to-b from-black via-black-opacity-46 to-transparent"
         style={{
           backgroundImage: `url(${Hero})`,
           backgroundPosition: "top",
           filter: "contrast(0.9)",
         }}
       >
-        <div className="px-8 py-40  flex flex-col space-y-8 items-center justify-between">
-          <h1 className="text-6xl text-white font-bold text-shadow">
+        <div className="px-12 py-8 md:py-40   flex flex-col space-y-8 items-center justify-between">
+          <h1 className="text-5xl md:text-6xl text-center text-white font-bold text-shadow">
             Introducing 24/7 Inactivewear
           </h1>
           <p className="text-xl text-white  text-shadow">
@@ -32,7 +32,7 @@ const Home = () => {
           <div className="flex flex-row items-center justify-center space-x-3 ">
             <Link
               to="collection"
-              className="text-black border-2 border-black text-md bg-white px-6 py-4 font-bold"
+              className="hidden md:block text-black border-2 border-black text-md bg-white px-6 py-4 font-bold"
             >
               SHOP TEES AND SHORTS
             </Link>

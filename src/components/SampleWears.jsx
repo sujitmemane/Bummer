@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import SampleWearElement from "./SampleWearElement";
 const SampleWears = () => {
   const [underwears, setUnderwears] = useState([]);
@@ -14,19 +15,21 @@ const SampleWears = () => {
   }, []);
 
   return (
-    <div className="container mx-auto my-12 flex flex-col items-center  ">
-      <h1 className="text-4xl font-bold text-center">Meet our favourites </h1>
-      <div className="grid md:grid-cols-4 px-24  mt-8 items-start gap-3 ">
+    <div className="container space-y-4 mx-auto my-8 md:my-12 flex flex-col items-center md:items-center  ">
+      <h1 className="text-3xl md:text-4xl font-bold text-center">
+        Meet our favourites{" "}
+      </h1>
+      <div className="grid grid-cols-1 border items-center justify-center md:grid-cols-4 md:px-24  mt-8 md:items-start gap-5 ">
         {underwears.map((underwear) => (
           <SampleWearElement key={underwear.id} underwear={underwear} />
         ))}
       </div>
-      <a
-        href="#"
-        className="px-12 py-3  text-black font-bold border-black border-2"
+      <Link
+        to="collection"
+        className="px-12 py-5  text-black font-bold border-black border-2"
       >
         SHOP ALL FAVOURITES
-      </a>
+      </Link>
     </div>
   );
 };

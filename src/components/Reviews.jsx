@@ -9,14 +9,14 @@ const Reviews = () => {
     return null;
   };
   return (
-    <div className="container mx-auto flex items-center justify-center p-8 text-black ">
+    <div className=" hidden md:block container mx-auto flex items-center justify-center p-8 text-black ">
       <Carousel
         autoplay={true}
         renderCenterLeftControls={renderControls}
         renderCenterRightControls={renderControls}
       >
-        <div className="p-2 flex flex-col items-center justify-center space-y-2 ">
-          <img src={Img2} className="w-32" />
+        <div className="px-4 md:p-2 flex flex-col items-center justify-center space-y-2 ">
+          <img src={Img2} className="w-24 md:w-32" />
           <div className="flex flex-row items-center justify-center space-x-2">
             <AiFillStar size={25} />
             <AiFillStar size={25} />
@@ -24,7 +24,7 @@ const Reviews = () => {
             <AiFillStar size={25} />
             <AiFillStar size={25} />
           </div>
-          <p className="text-lg max-w-md text-center">
+          <p className="text-lg md:max-w-md text-center">
             "I am big fan of customer experience. The whole buying process was
             seamless and the packaging was elite."
           </p>

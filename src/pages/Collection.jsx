@@ -29,7 +29,9 @@ const Collection = () => {
           Home <span className="opacity-30">/ </span> Collection{" "}
           <span className="opacity-30">/ </span>
         </p>
-        <h1 className="text-5xl font-bold text-black">All Inactivewear</h1>
+        <h1 className="text-5xl text-center font-bold text-black">
+          All Inactivewear
+        </h1>
       </div>
       <div className="px-4 py-2 text-lg ">{underwears.length} products</div>
       <div className="grid md:grid-cols-4 px-12  mt-8 items-start gap-7 ">
