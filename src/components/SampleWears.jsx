@@ -13,7 +13,12 @@ const SampleWears = () => {
     };
     fetchAPI();
   }, []);
-
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div className="container space-y-4 mx-auto my-8 md:my-12 flex flex-col items-center md:items-center  ">
       <h1 className="text-3xl md:text-4xl font-bold text-center">
@@ -26,6 +31,7 @@ const SampleWears = () => {
       </div>
       <Link
         to="collection"
+        onClick={scrollToTop}
         className="px-12 py-5  text-black font-bold border-black border-2"
       >
         SHOP ALL FAVOURITES

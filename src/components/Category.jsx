@@ -19,7 +19,12 @@ const Category = () => {
     };
     fetchAPI();
   }, []);
-
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div
       className="bg-[#e2eef7] py-8 px-8  md:p-24 flex flex-col items-center justify-center space-y-8"
@@ -62,6 +67,7 @@ const Category = () => {
       )}
       <Link
         to="collection"
+        onClick={scrollToTop}
         className="px-12 py-3 bg-white  text-black font-bold border-black border-2"
       >
         SHOP ALL UNDIES

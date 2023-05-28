@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const CollectionPageElement = ({ product }) => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
-    <Link to={`${product.id}`}>
+    <Link onClick={scrollToTop} to={`${product.id}`}>
       <div className="w-70 flex flex-col  justify-center space-y-1 cursor-pointer">
         <img src={product.imageUrl} className="w-70" />
 

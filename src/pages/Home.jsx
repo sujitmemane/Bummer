@@ -11,7 +11,12 @@ import cartContext from "../store/cart-context";
 
 const Home = () => {
   const cartCtx = useContext(cartContext);
-  console.log(cartCtx.items);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div>
       <div
@@ -32,12 +37,14 @@ const Home = () => {
           <div className="flex flex-row items-center justify-center space-x-3 ">
             <Link
               to="collection"
+              onClick={scrollToTop}
               className="hidden md:block text-black border-2 border-black text-md bg-white px-6 py-4 font-bold"
             >
               SHOP TEES AND SHORTS
             </Link>
             <Link
               to="collection"
+              onClick={scrollToTop}
               className="text-black border-2 border-black text-md bg-white px-8 py-4 font-bold"
             >
               SHOP UNDIES
